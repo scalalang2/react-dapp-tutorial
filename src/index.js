@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import '@elastic/eui/dist/eui_theme_light.css';
+import '@elastic/eui/dist/eui_theme_amsterdam_dark.css';
 
 ReactDOM.render(
   <React.StrictMode>
