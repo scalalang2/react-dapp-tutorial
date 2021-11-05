@@ -1,21 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { EuiCollapsibleNavGroup, EuiText, EuiSpacer, EuiButton, EuiButtonIcon, EuiLink } from '@elastic/eui';
+import { EuiCollapsibleNavGroup } from '@elastic/eui';
 import {
-    EuiListGroup,
-    EuiListGroupProps,
-    EuiPinnableListGroup,
-    EuiPinnableListGroupItemProps,
+    EuiListGroup
 } from '@elastic/eui';
   
-export const KibanaNavLinks = [
-    { label: 'Discover', href: '/test'},
-    { label: 'Visualize' },
-    { label: 'Dashboards' },
-    { label: 'Canvas' },
-    { label: 'Maps' },
-    { label: 'Machine Learning' },
-    { label: 'Graph' },
+export const ReactExampleNav = [
+    { label: '카운터', href: '/example/counter'},
+    { label: '입력값 동기화', href: '/example/sync-input' },
+    { label: '배열 동기화', href: '/example/sync-array' },
+    { label: '외부 데이터 조회하기', href: '/example/sync-external' },
+];
+
+export const WalletExampleNav = [
+    { label: '지갑 연동', href: '/wallet/connect'},
+    { label: '정보 조회', href: '/wallet/call' },
+    { label: '스마트 컨트랙트 실행', href: '/wallet/execute' },
 ];
   
 export const DeploymentsGroup = (
@@ -41,7 +41,20 @@ export default () => (
         initialIsOpen={true}
       >
         <EuiListGroup
-          listItems={KibanaNavLinks}
+          listItems={ReactExampleNav}
+          maxWidth="none"
+          color="subdued"
+          gutterSize="none"
+          size="s"
+        />
+      </EuiCollapsibleNavGroup>
+      <EuiCollapsibleNavGroup
+        title="지갑 연동 예시"
+        isCollapsible={true}
+        initialIsOpen={true}
+      >
+        <EuiListGroup
+          listItems={WalletExampleNav}
           maxWidth="none"
           color="subdued"
           gutterSize="none"

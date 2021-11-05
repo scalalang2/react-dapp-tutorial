@@ -19,6 +19,13 @@ import {
 
 import Header from './components/Header';
 import SideNav from './components/SideNav';
+import Counter from './example/react/Counter';
+import SyncInput from './example/react/SyncInput';
+import SyncArray from './example/react/SyncArray';
+import SyncExternal from './example/react/SyncExternal';
+import Call from './example/wallet/Call';
+import Connect from './example/wallet/Connect';
+import Execute from './example/wallet/Execute';
 
 function App() {
     return (
@@ -31,11 +38,6 @@ function App() {
                     </EuiPageSideBar>
                     <EuiPageBody panelled paddingSize="none">
                         <EuiPageBody paddingSize="m">
-                            <EuiPageHeader bottomBorder>
-                                <EuiTitle size={'s'}>
-                                    <h1>카운터 예제</h1>
-                                </EuiTitle>
-                            </EuiPageHeader>
                             <EuiPageContent
                                 hasBorder={false}
                                 hasShadow={false}
@@ -45,10 +47,28 @@ function App() {
                             >
                                 <EuiPageContentBody>
                                     <Switch>
-                                        <Route path="/test">
-                                            test
+                                        <Route path="/example/counter">
+                                            <Counter />
                                         </Route>
-                                        <Route path="/">
+                                        <Route path="/example/sync-input">
+                                            <SyncInput />
+                                        </Route>
+                                        <Route path="/example/sync-array">
+                                            <SyncArray />
+                                        </Route>
+                                        <Route path="/example/sync-external">
+                                            <SyncExternal/>
+                                        </Route>
+                                        <Route path="/wallet/connect">
+                                            <Connect />
+                                        </Route>
+                                        <Route path="/wallet/call">
+                                            <Call />
+                                        </Route>
+                                        <Route path="/wallet/execute">
+                                            <Execute />
+                                        </Route>
+                                        <Route exact path="/">
                                             home
                                         </Route>
                                     </Switch>
