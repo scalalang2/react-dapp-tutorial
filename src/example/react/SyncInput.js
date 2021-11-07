@@ -19,9 +19,7 @@ function SyncInput() {
                     <EuiFlexItem>
                     <EuiFieldText
                         placeholder="지갑 주소를 입력해주세요"
-                        prepend={[
-                            '0x'
-                        ]}
+                        prepend={[ '0x' ]}
                         onChange={(e) => setWalletAddress(e.target.value)}
                     />
                     </EuiFlexItem>

@@ -2,30 +2,28 @@ import { EuiPanel, EuiFlexGroup, EuiFlexItem, EuiIcon, EuiPageHeader, EuiPageHea
 import { useEffect, useState } from "react"
 
 function SyncExternal() {
-    const [prices, setPrices] = useState([]);
+    const [coins, setCoins] = useState([]);
 
     useEffect(() => {
         // 15분 간 루나 가격 변화
-        let lunaPriceAPI = "https://fcd.terra.dev/v1/market/price?denom=ukrw&interval=15m";
-        fetch(lunaPriceAPI).then(res => {
+        let coinAPI = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
+        fetch(coinAPI).then(res => {
             return res.json()
         }).then(values => {
-            setPrices(values.prices)
+            setCoins(values)
         })
     }, [])
 
     const PriceHistoryView = () => {
-        return prices.map(item => {
+        return coins.map(item => {
             return (
                 <EuiPanel hasShadow={false} hasBorder={true}>
                     <EuiFlexGroup>
-                        <EuiFlexItem grow={1}>단위: KRW </EuiFlexItem>
-                        <EuiFlexItem grow={2}>{item.price}</EuiFlexItem>
-                        <EuiFlexItem grow={6}>
-                            <div>
-                                <EuiIcon type={'dot'} color={'success'} /> {item.datetime}
-                            </div>
-                        </EuiFlexItem>
+                        <EuiFlexItem grow={1}><img src={item.image} width={30} height={30} />{item.name}</EuiFlexItem>
+                        <EuiFlexItem grow={2}>가격:${item.current_price}</EuiFlexItem>
+                        <EuiFlexItem grow={2}>TVL:${item.total_volume}</EuiFlexItem>
+                        <EuiFlexItem grow={2}>유통량:{item.circulating_supply}</EuiFlexItem>
+                        <EuiFlexItem grow={2}>총 발행량:{item.total_supply}</EuiFlexItem>
                     </EuiFlexGroup>
                 </EuiPanel>
             )
@@ -37,7 +35,7 @@ function SyncExternal() {
             <EuiPageHeader>
                 <EuiPageHeaderSection>
                     <EuiTitle size="s">
-                        <h1>루나 15분간 가격 변화</h1>
+                        <h1>코인 마켓 순위</h1>
                     </EuiTitle>
                 </EuiPageHeaderSection>
             </EuiPageHeader>
