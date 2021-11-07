@@ -26,6 +26,7 @@ import SyncExternal from './example/react/SyncExternal';
 import Call from './example/wallet/Call';
 import Connect from './example/wallet/Connect';
 import Execute from './example/wallet/Execute';
+import DefaultData from './example/react/DefaultData';
 
 function App() {
     return (
@@ -47,6 +48,9 @@ function App() {
                             >
                                 <EuiPageContentBody>
                                     <Switch>
+                                        <Route path="/example/data">
+                                            <DefaultData />
+                                        </Route>
                                         <Route path="/example/counter">
                                             <Counter />
                                         </Route>

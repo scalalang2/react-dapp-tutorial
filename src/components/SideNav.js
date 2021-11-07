@@ -6,6 +6,7 @@ import {
 } from '@elastic/eui';
   
 export const ReactExampleNav = [
+    { label: '기본 데이터 변경', href: '/example/data' },
     { label: '카운터', href: '/example/counter'},
     { label: '입력값 동기화', href: '/example/sync-input' },
     { label: '배열 동기화', href: '/example/sync-array' },
