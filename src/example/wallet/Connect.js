@@ -1,6 +1,6 @@
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { useWeb3React } from '@web3-react/core'
-import { EuiFlexGroup, EuiFlexItem, EuiButton } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiButton, EuiDescriptionList, EuiPanel } from "@elastic/eui";
 import { useEffect, useState } from 'react';
 
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] })
@@ -17,23 +17,24 @@ function Connect() {
                 setBalance(value.toString());
             })
         }
-    }, [account, library, chainId])
+    }, [account, library, chainId, active])
 
     const connectWallet = () => {
         activate(injected);
     }
     
     return (
-        <EuiFlexGroup direction={'column'} style={{ width: '30%' }}>
+        <EuiFlexGroup direction={'column'} style={{ width: '50%' }}>
             <EuiFlexItem>
                 <EuiButton onClick={() => connectWallet() }>지갑 연결하기</EuiButton>
             </EuiFlexItem>
             <EuiFlexItem>
-                {active && (<>{"당신의 지갑 주소는 : " + account + " 입니다."}</>) }
-                {!active && (<>지갑을 연결해주세요.</>)}
-            </EuiFlexItem>
-            <EuiFlexItem>
-                { balance } ETH
+                <EuiPanel hasShadow={false} hasBorder={true}>
+                    <EuiDescriptionList listItems={[
+                        { title: '지갑 주소', description: active ? "당신의 지갑 주소는 : " + account + " 입니다." : "지갑을 연결해주세요." },
+                        { title: "잔액", description: `${balance} ETH`}
+                    ]} />
+                </EuiPanel>
             </EuiFlexItem>
         </EuiFlexGroup>
     )
